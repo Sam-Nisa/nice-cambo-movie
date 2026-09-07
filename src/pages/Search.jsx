@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom"
 import { tmdb } from "../api/tmdb.js"
 import PosterCard from "../components/PosterCard.jsx"
 import { Loading, ErrorState, EmptyState } from "../components/Status.jsx"
-import "./Grid.css"
 
 export default function Search() {
   const [params] = useSearchParams()
@@ -36,19 +35,32 @@ export default function Search() {
   }, [query])
 
   return (
-    <div className="shell grid-page">
-      <h1 className="grid-page__title">
-        {query ? `Results for “${query}”` : "Search for something to watch"}
-      </h1>
+    <div className="shell py-8 sm:py-12 animate-fade-in min-h-[70vh]">
+      <div className="mb-6 sm:mb-8 pb-4 border-b border-brand-hairline/40">
+        <h1 className="font-display font-semibold text-xl sm:text-2xl md:text-3xl text-brand-ink">
+          {query ? (
+            <span>
+              Results for <span className="text-brand-gold italic">“{query}”</span>
+            </span>
+          ) : (
+            "Search for something to watch"
+          )}
+        </h1>
+        {query && state.results.length > 0 && !state.loading && (
+          <p className="text-xs sm:text-sm text-brand-ink-muted mt-1">
+            Found {state.results.length} matching {state.results.length === 1 ? "title" : "titles"}
+          </p>
+        )}
+      </div>
 
-      {state.loading && <Loading label="Searching" />}
+      {state.loading && <Loading label="Searching the archives" />}
       {state.error && <ErrorState message={state.error} />}
       {!state.loading && !state.error && query && state.results.length === 0 && (
-        <EmptyState message="No titles matched. Try a different spelling or a broader term." />
+        <EmptyState message="No titles matched your search. Try a different spelling or a broader keyword." />
       )}
 
       {!state.loading && state.results.length > 0 && (
-        <div className="grid-page__grid">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
           {state.results.map((item) => (
             <PosterCard key={`${item.id}-${item.media_type}`} item={item} />
           ))}
