@@ -39,13 +39,13 @@ export default function Genre() {
   }
 
   return (
-    <div className="shell py-8 sm:py-12 animate-fade-in min-h-[70vh]">
-      <div className="mb-6 sm:mb-8 pb-4 border-b border-brand-hairline/40 flex items-center justify-between">
-        <h1 className="font-display font-semibold text-xl sm:text-2xl md:text-3xl text-brand-ink">
+    <div className="shell py-10 sm:py-14 animate-fade-in min-h-[70vh]">
+      <div className="mb-8 sm:mb-10 pb-4 border-b border-brand-hairline/40 flex items-center justify-between">
+        <h1 className="font-display font-semibold text-2xl sm:text-3xl md:text-4xl text-brand-ink">
           {genreName || "Loading genre…"}
         </h1>
         {state.results.length > 0 && (
-          <span className="text-xs sm:text-sm text-brand-ink-muted">
+          <span className="text-xs sm:text-sm text-brand-ink-muted bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-hairline font-medium">
             {state.results.length} titles
           </span>
         )}
@@ -59,18 +59,18 @@ export default function Genre() {
 
       {state.results.length > 0 && (
         <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6 md:gap-8">
             {state.results.map((item) => (
-              <PosterCard key={`${item.id}-${item.title}`} item={{ ...item, media_type: "movie" }} />
+              <PosterCard key={item.id} item={{ ...item, media_type: "movie" }} />
             ))}
           </div>
 
-          <div className="text-center mt-10 sm:mt-12">
+          <div className="text-center mt-12 sm:mt-16">
             <button
               type="button"
               onClick={loadMore}
               disabled={loadingMore}
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md bg-brand-surface border border-brand-hairline text-brand-ink text-xs sm:text-sm font-medium hover:border-brand-gold hover:text-brand-gold transition-colors cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-brand-surface border border-brand-hairline text-brand-ink text-sm font-medium hover:border-brand-gold hover:text-brand-gold transition-colors cursor-pointer disabled:opacity-50 shadow-md"
             >
               {loadingMore ? (
                 <>

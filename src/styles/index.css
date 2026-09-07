@@ -31,7 +31,7 @@
 
 @layer components {
   .shell {
-    @apply max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10;
   }
 }
 
@@ -48,18 +48,19 @@
 
   /* Custom subtle cinema scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
+    height: 7px;
+    width: 7px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(26, 24, 21, 0.4);
+    border-radius: 9999px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #35312a;
     border-radius: 9999px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #4a453b;
+    background: #c9a227;
   }
 }
 

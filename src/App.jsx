@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar.jsx"
+import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Search from "./pages/Search.jsx"
 import MovieDetails from "./pages/MovieDetails.jsx"
@@ -10,9 +11,9 @@ import NotFound from "./pages/NotFound.jsx"
 
 export default function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-brand-bg text-brand-ink">
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-    </>
+      <Footer />
+    </div>
   )
 }

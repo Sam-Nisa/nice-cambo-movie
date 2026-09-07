@@ -25,9 +25,9 @@ export default function PosterCard({ item }) {
   return (
     <Link
       to={`/${mediaType}/${item.id}`}
-      className="group block w-full select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-md"
+      className="group block w-full select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-lg"
     >
-      <div className="relative aspect-[2/3] w-full rounded-md overflow-hidden bg-brand-surface border border-brand-hairline group-hover:border-brand-gold/50 shadow-md transition-all duration-300">
+      <div className="relative aspect-[2/3] w-full rounded-lg overflow-hidden bg-brand-surface border border-brand-hairline group-hover:border-brand-gold/60 shadow-lg group-hover:shadow-2xl group-hover:shadow-brand-gold/10 transition-all duration-300">
         {item.poster_path ? (
           <img
             src={IMG.poster(item.poster_path)}
@@ -36,7 +36,7 @@ export default function PosterCard({ item }) {
             className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center p-4 text-center font-display text-xs sm:text-sm text-brand-ink-muted bg-brand-surface">
+          <div className="w-full h-full flex items-center justify-center p-4 text-center font-display text-sm text-brand-ink-muted bg-brand-surface">
             {title}
           </div>
         )}
@@ -47,24 +47,24 @@ export default function PosterCard({ item }) {
           onClick={handleFavoriteClick}
           aria-pressed={favorited}
           aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
-          className={`absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-200 z-10 ${
+          className={`absolute top-2.5 right-2.5 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-200 z-10 ${
             favorited
-              ? "bg-brand-bg/85 border border-brand-gold text-brand-gold shadow-lg"
-              : "bg-brand-bg/70 border border-brand-hairline/80 text-brand-ink-muted hover:text-brand-gold hover:border-brand-gold/60 hover:scale-110"
+              ? "bg-brand-bg/90 border border-brand-gold text-brand-gold shadow-lg"
+              : "bg-brand-bg/75 border border-brand-hairline text-brand-ink-muted hover:text-brand-gold hover:border-brand-gold/70 hover:scale-110"
           }`}
         >
-          <span className="text-xs sm:text-sm leading-none">★</span>
+          <span className="text-sm sm:text-base leading-none">★</span>
         </button>
       </div>
 
-      <div className="mt-2 sm:mt-2.5">
-        <p className="font-medium text-xs sm:text-sm text-brand-ink truncate group-hover:text-brand-gold transition-colors">
+      <div className="mt-3">
+        <p className="font-semibold text-sm sm:text-base text-brand-ink truncate group-hover:text-brand-gold transition-colors">
           {title}
         </p>
-        <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-brand-ink-muted mt-0.5">
+        <div className="flex items-center gap-2 text-xs sm:text-sm text-brand-ink-muted mt-1 font-medium">
           <span>{year || "—"}</span>
           <span>·</span>
-          <span className="flex items-center gap-0.5 text-brand-gold">
+          <span className="flex items-center gap-1 text-brand-gold">
             <span>★</span>
             <span className="text-brand-ink-muted">
               {item.vote_average ? item.vote_average.toFixed(1) : "n/a"}

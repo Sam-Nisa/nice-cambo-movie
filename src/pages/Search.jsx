@@ -35,9 +35,9 @@ export default function Search() {
   }, [query])
 
   return (
-    <div className="shell py-8 sm:py-12 animate-fade-in min-h-[70vh]">
-      <div className="mb-6 sm:mb-8 pb-4 border-b border-brand-hairline/40">
-        <h1 className="font-display font-semibold text-xl sm:text-2xl md:text-3xl text-brand-ink">
+    <div className="shell py-10 sm:py-14 animate-fade-in min-h-[70vh]">
+      <div className="mb-8 sm:mb-10 pb-4 border-b border-brand-hairline/40">
+        <h1 className="font-display font-semibold text-2xl sm:text-3xl md:text-4xl text-brand-ink">
           {query ? (
             <span>
               Results for <span className="text-brand-gold italic">“{query}”</span>
@@ -47,7 +47,7 @@ export default function Search() {
           )}
         </h1>
         {query && state.results.length > 0 && !state.loading && (
-          <p className="text-xs sm:text-sm text-brand-ink-muted mt-1">
+          <p className="text-sm sm:text-base text-brand-ink-muted mt-1.5 font-medium">
             Found {state.results.length} matching {state.results.length === 1 ? "title" : "titles"}
           </p>
         )}
@@ -60,7 +60,7 @@ export default function Search() {
       )}
 
       {!state.loading && state.results.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6 md:gap-8">
           {state.results.map((item) => (
             <PosterCard key={`${item.id}-${item.media_type}`} item={item} />
           ))}
